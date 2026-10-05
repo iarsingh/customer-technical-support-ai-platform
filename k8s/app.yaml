@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-technical-support-ai-platform
+  labels:
+    app: customer-technical-support-ai-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customer-technical-support-ai-platform
+  template:
+    metadata:
+      labels:
+        app: customer-technical-support-ai-platform
+    spec:
+      containers:
+        - name: api
+          image: customer-technical-support-ai-platform:local
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /v1/readyz
+              port: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: customer-technical-support-ai-platform
+spec:
+  selector:
+    app: customer-technical-support-ai-platform
+  ports:
+    - port: 80
+      targetPort: 8080

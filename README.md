@@ -1,5 +1,12 @@
 # Customer Technical Support AI Platform
 
+## Overview
+
+A small support assistant that answers questions only from customer-facing run notes kept locally. A question unrelated to those notes is refused instead of being answered by guesswork. The assistant is served through a `POST /ask` endpoint, and a versioned `/v1` ops API adds workspaces, tenant isolation, job approval and audit records.
+
+- **Built with:** Python, pytest, Docker Compose, GitHub Actions
+- **Scope:** Local laptop lab with tests; it does not call a hosted model or apply production changes.
+
 <!-- project-guide:start -->
 ## Project guide
 
